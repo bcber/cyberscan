@@ -41,7 +41,7 @@
             %span.desc= "Something"
 
       .span12
-        %h1
+        %h2
           ='Targets'
           %div{style:'float:right;'}
             %input.btn.btn-danger.btn-small{name: "commit", onclick:"window.location.href='/targets/new'", style: "float:right padding-top:0;margin-bottom:13px;margin-left:5px;", type: "submit", value: "Add New"}/
@@ -50,20 +50,24 @@
           %thead
             %th Name
             %th IP Address
-            %th Status
-            %th Report
             %th Created
             %th Updated
+            %th Status
             %th
           -@targets.each do |t|
             %tr
               %td= t.name
               %td= t.ip_address
-              %td= t.status.blank? ? 'Not Scanned' : t.status.titleize
-              %td= t.report_id.blank? ? 'n/a' : 'tbc'
               %td= time_ago_in_words(t.created_at) + ' ago'
               %td= time_ago_in_words(t.updated_at) + ' ago'
+              %td= t.status.blank? ? 'Not Scanned' : t.print_status.html_safe
               %td
-                %input.btn.btn-small{name: "commit", onclick:"window.location.href='#{edit_target_path(t)}'", style: "float:right padding-top:0;margin-bottom:13px;margin-left:5px;", type: "submit", value: "Edit"}/
-                %input.btn.btn-small{name: "commit", onclick:"window.location.href='#{target_path(t)}'", style: "float:right padding-top:0;margin-bottom:13px;margin-left:5px;", type: "submit", value: "Show"}/
-                %input.btn.btn-danger.btn-small{name: "commit", onclick:"window.location.href='/targets/#{t.id}/scan'", style: "float:right padding-top:0;margin-bottom:13px;margin-left:5px;", type: "submit", value: "Scan"}/
+                -disable = t.status == 'scanning'
+                - if disable
+                  %input.btn.btn-small{name: "commit", onclick:"window.location.href='#{edit_target_path(t)}'", style: "float:right padding-top:0;margin-bottom:13px;margin-left:5px;", type: "submit", value: "Edit", disabled: true}/
+                  %input.btn.btn-small{name: "commit", onclick:"window.location.href='#{target_path(t)}'", style: "float:right padding-top:0;margin-bottom:13px;margin-left:5px;", type: "submit", value: "Show", disabled: true}/
+                  %input.btn.btn-danger.btn-small{name: "commit", onclick:"window.location.href='/targets/#{t.id}/scan'", style: "float:right padding-top:0;margin-bottom:13px;margin-left:5px;", type: "submit", value: "Scan", disabled:true}/
+                - else
+                  %input.btn.btn-small{name: "commit", onclick:"window.location.href='#{edit_target_path(t)}'", style: "float:right padding-top:0;margin-bottom:13px;margin-left:5px;", type: "submit", value: "Edit"}/
+                  %input.btn.btn-small{name: "commit", onclick:"window.location.href='#{target_path(t)}'", style: "float:right padding-top:0;margin-bottom:13px;margin-left:5px;", type: "submit", value: "Show"}/
+                  %input.btn.btn-danger.btn-small{name: "commit", onclick:"window.location.href='/targets/#{t.id}/scan'", style: "float:right padding-top:0;margin-bottom:13px;margin-left:5px;", type: "submit", value: "Scan"}/

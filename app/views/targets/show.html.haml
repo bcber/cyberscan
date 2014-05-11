@@ -16,7 +16,7 @@
   .container
     = render 'layouts/messages_admin'
     .row
-      %h1
+      %h2
         ="Target #{@target.id}"
       %br
         %table.queues.table.table-bordered.table-striped.table-white{:style=>"width:80%;"}
@@ -36,7 +36,7 @@
 
 
     .row
-      %h1
+      %h2
         ="Report"
       %p
         =@target.report.tool
