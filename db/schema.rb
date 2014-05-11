@@ -11,12 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140511011336) do
+ActiveRecord::Schema.define(:version => 20140511033233) do
+
+  create_table "reports", :force => true do |t|
+    t.integer  "target_id"
+    t.string   "tool"
+    t.text     "tool_output"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "targets", :force => true do |t|
     t.string   "name"
     t.string   "ip_address"
-    t.boolean  "status"
+    t.string   "status"
     t.integer  "report_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false

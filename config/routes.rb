@@ -1,5 +1,6 @@
 Cyberscan::Application.routes.draw do
   resources :targets
+  match 'targets/:id/scan' => 'targets#scan'
 
 
   require 'sidekiq/web'

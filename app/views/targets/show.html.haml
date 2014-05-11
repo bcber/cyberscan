@@ -39,4 +39,6 @@
       %h1
         ="Report"
       %p
-        Report results would then go here
+        =@target.report.tool
+        %br
+        =@target.report.tool_output.html_safe

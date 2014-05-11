@@ -59,11 +59,11 @@
             %tr
               %td= t.name
               %td= t.ip_address
-              %td= t.status.blank? ? 'Not Scanned' : t.status.upcase
+              %td= t.status.blank? ? 'Not Scanned' : t.status.titleize
               %td= t.report_id.blank? ? 'n/a' : 'tbc'
               %td= time_ago_in_words(t.created_at) + ' ago'
               %td= time_ago_in_words(t.updated_at) + ' ago'
               %td
                 %input.btn.btn-small{name: "commit", onclick:"window.location.href='#{edit_target_path(t)}'", style: "float:right padding-top:0;margin-bottom:13px;margin-left:5px;", type: "submit", value: "Edit"}/
                 %input.btn.btn-small{name: "commit", onclick:"window.location.href='#{target_path(t)}'", style: "float:right padding-top:0;margin-bottom:13px;margin-left:5px;", type: "submit", value: "Show"}/
-                %input.btn.btn-danger.btn-small{name: "commit", onclick:"window.location.href='#'", style: "float:right padding-top:0;margin-bottom:13px;margin-left:5px;", type: "submit", value: "Scan"}/
+                %input.btn.btn-danger.btn-small{name: "commit", onclick:"window.location.href='/targets/#{t.id}/scan'", style: "float:right padding-top:0;margin-bottom:13px;margin-left:5px;", type: "submit", value: "Scan"}/

@@ -1,4 +1,15 @@
 class TargetsController < ApplicationController
+  def scan
+    @target = Target.find(params[:id])
+    if @target.status.blank?
+      @target.update_attribute(:status,'scanning')
+      ScanWorker.perform_async(@target.id)
+      redirect_to targets_path, :notice => "Started scanning #{@target.ip_address}"
+    else
+      redirect_to targets_path, :notice => "Already scanned #{@target.ip_address}"
+    end
+  end
+
   def index
     @targets = Target.all
   end

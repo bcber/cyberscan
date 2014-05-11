@@ -3,7 +3,7 @@ class CreateTargets < ActiveRecord::Migration
     create_table :targets do |t|
       t.string :name
       t.string :ip_address
-      t.boolean :status
+      t.string :status
       t.integer :report_id
 
       t.timestamps
