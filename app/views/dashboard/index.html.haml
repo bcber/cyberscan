@@ -1,0 +1,36 @@
+.navbar.navbar-default.navbar-fixed-top
+  .navbar-inner
+    .container
+      %a.navbar-brand{href: "/sidekiq/"}
+        Cyber Scan
+        %span.status
+          -#%i.status-sprite.status-idle
+          -#cyberscan
+      %ul.nav.navbar-nav
+        %li.active
+          %a{href: "/"} Dashboard
+        %li
+          %a{href: "/targets"} Targets
+      .poll-wrapper.pull-right
+-#.navbar.navbar-fixed-top
+  .navbar-inner
+    .container
+      %a.brand{href: "/"} PAPI (PA Plesk Integration)
+      %ul.nav
+        %li.active
+          %a{href: "/"} Dashboard
+        %li
+          %a{href: "/errors"} Queue
+        %li
+          %a{href: "/nodes"} Servers
+        %li
+          %a{href: "/plans"} Service Plans
+      .search{style:"float:right;"}
+        = form_tag '/search', :style => "padding-top:5px;margin-bottom:0;", :method => 'get' do
+          = text_field_tag "ident", '', :placeholder=>"PA or PAPI Subscription ID", :style => "margin-left:25px;height:95%;"
+          = submit_tag "Go", :class => "btn btn-danger btn-small", :style => " padding-top:0;margin-bottom:13px;margin-left:5px;"
+
+= render 'layouts/messages_admin'
+#page.content
+  %iframe{:src => "sidekiq", :width => '100%', :height => 'auto', :scrolling => 'yes', :frameborder => "0",
+          :style => "position: absolute; top: 0; left: 0;width: 100%; height: 100%;"}

@@ -1,0 +1,34 @@
+- flash.each do |name, msg|
+  - if msg.is_a?(String)
+    - if msg != 'You need to sign in before continuing.'
+      - if name == :notice
+        .alert.alert-success
+          =msg
+
+      - else
+        .alert.alert-error
+          =msg
+-##opresult_id.OpResult-wrapper
+-#  .msg-box.msg-error
+-#    %div
+-#      %div
+-#        %div
+-#          %div
+-#            %div
+-#              .msg-content No error.
+-##opresult_id.OpResult-wrapper
+-#  .msg-box.msg-warning
+-#    %div
+-#      %div
+-#        %div
+-#          %div
+-#            %div
+-#              .msg-content Warning.
+-##opresult_id.OpResult-wrapper
+-#  .msg-box.msg-info
+-#    %div
+-#      %div
+-#        %div
+-#          %div
+-#            %div
+-#              .msg-content Info.

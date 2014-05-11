@@ -1,0 +1,20 @@
+= form_for @target do |f|
+  - if @target.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@target.errors.count, "error")} prohibited this target from being saved:"
+      %ul
+        - @target.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    %br
+    = f.text_field :name
+  .field
+    = f.label :ip_address
+    %br
+    = f.text_field :ip_address
+  %br
+  .actions
+    %input.btn.btn-danger.btn-small{name: "commit", onclick:"window.location.href='/targets/new'", style: "float:right padding-top:0;margin-bottom:13px;margin-left:5px;", type: "submit", value: "Save"}/
+

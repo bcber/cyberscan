@@ -1,0 +1,23 @@
+.navbar.navbar-default.navbar-fixed-top
+  .navbar-inner
+    .container
+      %a.navbar-brand{href: "/sidekiq/"}
+        Cyber Scan
+        %span.status
+          -#%i.status-sprite.status-idle
+          -#cyberscan
+      %ul.nav.navbar-nav
+        %li
+          %a{href: "/"} Dashboard
+        %li.active
+          %a{href: "/targets"} Targets
+      .poll-wrapper.pull-right
+#page
+  .container
+    = render 'layouts/messages_admin'
+    .row
+      %h1 New target
+
+      = render 'form'
+
+      = link_to 'Back', targets_path

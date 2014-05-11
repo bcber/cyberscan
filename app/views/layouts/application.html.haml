@@ -1,0 +1,9 @@
+%html
+  %head
+    %title Cyber Scan (by Cyber Ops)
+    %meta{content: "width=device-width,initial-scale=1.0", name: "viewport"}/
+    %link{href: "/sidekiq/stylesheets/bootstrap.css", rel: "stylesheet", type: "text/css"}/
+    %link{href: "/sidekiq/stylesheets/application.css", rel: "stylesheet", type: "text/css"}/
+  %body.admin
+    = render 'layouts/navigation'
+    = yield

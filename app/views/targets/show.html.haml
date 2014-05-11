@@ -1,0 +1,42 @@
+.navbar.navbar-default.navbar-fixed-top
+  .navbar-inner
+    .container
+      %a.navbar-brand{href: "/sidekiq/"}
+        Cyber Scan
+        %span.status
+          -#%i.status-sprite.status-idle
+          -#cyberscan
+      %ul.nav.navbar-nav
+        %li
+          %a{href: "/"} Dashboard
+        %li.active
+          %a{href: "/targets"} Targets
+      .poll-wrapper.pull-right
+#page
+  .container
+    = render 'layouts/messages_admin'
+    .row
+      %h1
+        ="Target #{@target.id}"
+      %br
+        %table.queues.table.table-bordered.table-striped.table-white{:style=>"width:80%;"}
+          %tr
+            %th{style:"width:25%;"} Name
+            %td= @target.name
+          %tr
+            %th IP Address
+            %td= @target.ip_address
+          %tr
+            %th Status
+            %td= @target.status.blank? ? "Not Scanning" : @target.status
+          %tr
+            %th Created
+            %td= time_ago_in_words(@target.created_at) + ' ago'
+
+
+
+    .row
+      %h1
+        ="Report"
+      %p
+        Report results would then go here
